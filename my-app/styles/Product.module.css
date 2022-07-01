@@ -1,0 +1,36 @@
+.productContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.productCard {
+  border: 1px solid grey;
+  padding: 4em;
+  margin: 2em;
+}
+
+.productCard__sectionHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.productCard__name {}
+
+.productCard__brand {}
+
+.productCard__sectionMain {
+  display: flex;
+  justify-content: space-between;
+}
+
+.productCard__sectionColors {
+  display: flex;
+}
+
+.productCard__sectionColors_box {
+  padding: 1em;
+  margin-right: 1em;
+  border: 1px solid grey;
+  border-radius: 4px;
+}

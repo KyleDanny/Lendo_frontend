@@ -10,8 +10,13 @@ const useStore = create((set) => ({
   },
   addToCart: (product) => {
     set(state => {
+      console.log("incoming product", product);
+
       const cartProduct = state.cart.find(cartProduct => cartProduct.id === product.id && JSON.stringify(cartProduct.options) === JSON.stringify(product.options));
+      console.log("Existing Product in Cart", cartProduct);
+
       const productDB = state.products.items.find(productInDB => productInDB.id === product.id);
+      // console.log("Actual Product in DB", productDB);
 
       if (cartProduct) {
         const productDBOptions = productDB.options.find(option => option.color === cartProduct.options.color);
