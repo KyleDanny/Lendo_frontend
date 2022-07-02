@@ -1,0 +1,20 @@
+.cartContainer {
+  background: white;
+  width: 80%;
+}
+
+.cartName {
+
+}
+
+.cart {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.cartItem {
+  margin: 1em;
+}

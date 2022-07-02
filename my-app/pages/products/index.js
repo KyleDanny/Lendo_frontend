@@ -7,14 +7,14 @@ const Products = () => {
 
   return (
     <div className={styles.productsContainter}>
-      <button><Link href={`/cart`}>Checkout</Link></button>
+      <button className="button_primary"><Link href={`/cart`}>Checkout</Link></button>
 
       <div className={styles.productsCard__grid}>
         {products.map((product) => (
           <div key={product.id} className={styles.productsCard}>
             <div className={styles.x}><p>{product.name}</p></div>
             <div><p>Kr {product.price}</p></div>
-            <div className={styles.z}><button><Link href={`/products/${product.id}`}>see more</Link></button></div>
+            <div className={styles.z}><button className="button_secondary"><Link href={`/products/${product.id}`}>see more</Link></button></div>
           </div>
         ))}
       </div>

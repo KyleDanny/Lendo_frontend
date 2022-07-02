@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap');
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Montserrat', sans-serif;
+    background-color: #F2F3F7;
 }
 
 a {
@@ -22,6 +24,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #ddd;
+  background-color: white;
 }
 nav a {
   margin-left: 12px;
@@ -41,4 +44,53 @@ nav .nav-links {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.active {
+  background: grey;
+}
+
+.button_primary {
+  color: white;
+  background-color: #ef8374;
+  border: 1px solid #ef8374;
+  border-radius: .3rem;
+  padding: .6rem 1.2rem;
+}
+
+.button_primary:hover {
+  color: #ef8374;
+  background-color: #fee3e2;
+  border: 1px solid #ef8374;
+  border-radius: .3rem;
+  padding: .6rem 1.2rem;
+  cursor: pointer;
+}
+
+.button_secondary {
+  color: #ef8374;
+  background-color: white;
+  border: 1px solid #ef8374;
+  border-radius: .3rem;
+  padding: .6rem 1.2rem;
+  margin-right: 1rem;
+}
+
+.button_secondary:hover {
+  color: #ef8374;
+  background-color: #fee3e2;
+  border: 1px solid #ef8374;
+  border-radius: .3rem;
+  padding: .6rem 1.2rem;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.button_disabled {
+  color: grey;
+  background-color: white;
+  border: 1px solid grey;
+  border-radius: .3rem;
+  padding: .6rem 1.2rem;
+  margin-right: 1rem;
 }

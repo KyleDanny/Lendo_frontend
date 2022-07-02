@@ -4,6 +4,16 @@ export const RenderOptionTags = (options) => {
   })
 }
 
+export const createSelectedOption = (product, color) => {
+  const option = product.options.find((option) => option.color === color);
+  return {
+    color: option.color,
+    quantity: option.quantity,
+    power: option.power || null,
+    storage: option.storage || null,
+  };
+}
+
 export const updateSelectedOptions = (product, selectedOption) => {
   const updatedProductOption = product.options.find((option) => option.color === selectedOption.color);
   return {
@@ -29,7 +39,3 @@ export const createItemForCart = (product, selectedOption, power, storage) => {
     }
   }
 }
-
-// check this below - do we need? 
-    // const currentProduct = getSingleProduct(product.id);
-    // const updatedOption = currentProduct.options.find((option) => option.color === selectedOption.color);

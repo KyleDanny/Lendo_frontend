@@ -4,8 +4,9 @@ import { useRouter } from "next/router";
 import useStore from "../../store";
 import { useEffect, useState } from "react";
 import VariantOptions from "../../components/VariantOptions";
+import ColorOption from "../../components/ColorOption";
 
-import { updateSelectedOptions, createItemForCart } from "../../helper_functions";
+import { createSelectedOption, updateSelectedOptions, createItemForCart } from "../../helper_functions";
 
 const Product = () => {
   const router = useRouter();
@@ -14,30 +15,40 @@ const Product = () => {
   const [product, setProduct] = useState();
   const [selectedOption, setSelectedOption] = useState();
 
-  const [power, setPower] = useState();
-  const [storage, setStorage] = useState();
+  const [updatedPower, setUpdatedPower] = useState();
+  const [updatedStorage, setUpdatedStorage] = useState();
+
   const [confirmationMessage, setConfirmationMessage] = useState(null);
   const [loaded, setLoaded] = useState(false);
   
   const { getSingleProduct } = useStore();
   const { addToCart } = useStore();
 
+  const [nowSelected, setNowSelected] = useState(false);
+
+  const updatePower = power => setUpdatedPower(power);
+  const updateStorage = storage => setUpdatedStorage(storage);
+
   const selectedVariant = (color) => {
     setLoaded(false);
-    const option = product.options.find((option) => option.color === color);
-    // CAN USE SAME FUNCTION IN HELPER FUNCTIONS
-    const currentSelectedOption = {
-      color: option.color,
-      quantity: option.quantity,
-      power: option.power || null,
-      storage: option.storage || null,
-    };
-    setSelectedOption(currentSelectedOption);
+    const newSelectedOption = createSelectedOption(product, color)
+    setSelectedOption(newSelectedOption);
   };
+
+  const handleClick = (e, color) => {
+    e.preventDefault();
+    e.stopPropagation();
+    selectedVariant(color);
+
+    console.log(selectedOption.color)
+    console.log(color)
+    // if (selectedOption && selectedOption.color === color) {}
+
+  }
 
   const handleAddToCart = (e) => {
     e.preventDefault();
-    const newCartItem = createItemForCart(product, selectedOption, power, storage)
+    const newCartItem = createItemForCart(product, selectedOption, updatedPower, updatedStorage)
     addToCart(newCartItem);
     setConfirmationMessage("Item added to cart!");
 
@@ -60,12 +71,24 @@ const Product = () => {
   useEffect(() => {
     if (loaded && product) {
       setSelectedOption(product.options[0]);
+      console.log("set default selected option", selectedOption);
     }
   }), [loaded];
 
+  useEffect(() => {
+
+  }, [selectedOption])
+  
   return product ? (
     <div className={styles.productContainer}>
-      <div><button onClick={() => router.back()}>Back</button></div>
+      <div className={styles.infoBar}>
+        <div><button className="button_secondary" onClick={() => router.back()}>Back</button></div>
+        <div>
+          {confirmationMessage && (
+            <p className="Product__confirmation">{confirmationMessage}</p>
+          )}
+        </div>
+      </div>
       
       <div className={styles.productCard}>
         <div className={styles.productCard__sectionHeader}>
@@ -83,26 +106,24 @@ const Product = () => {
         <div className={styles.productCard__sectionColors}>
           {product.options.map((option, i) => {
             return (
-              <div className={styles.productCard__sectionColors_box} key={i} onClick={() => selectedVariant(option.color)}>
-                {option.color}
-              </div>
+              <ColorOption 
+                key={i} 
+                color={option.color} 
+                nowSelected={nowSelected}
+                handleClick={handleClick}
+              />
             );
           })}
         </div>
         {selectedOption && ( 
         <VariantOptions 
           selectedOption={selectedOption} 
-          power={power}
-          setPower={setPower}
-          storage={storage}
-          setStorage={setStorage}
+          updatePower={updatePower}
+          updateStorage={updateStorage}
           />
         )}
-        {product.available && (selectedOption && selectedOption.quantity !== 0) ? <button onClick={(e) => handleAddToCart(e)}>Add to Cart</button> : <button disabled>Item not available</button>}
+        {product.available && (selectedOption && selectedOption.quantity !== 0) ? <button className="button_primary" onClick={(e) => handleAddToCart(e)}>Add to Cart</button> : <button className="button_disabled" disabled>Item not available</button>}
 
-        {confirmationMessage && (
-                <p className="Product__confirmation">{confirmationMessage}</p>
-              )}
       </div>
     </div>
   ) : (
