@@ -10,6 +10,7 @@ const useStore = create((set) => ({
   },
   addToCart: (product) => {
     set(state => {
+      console.log(product)
       const cartProduct = state.cart.find(cartProduct => cartProduct.id === product.id && JSON.stringify(cartProduct.options) === JSON.stringify(product.options));
       const productDB = state.products.items.find(productInDB => productInDB.id === product.id);
 

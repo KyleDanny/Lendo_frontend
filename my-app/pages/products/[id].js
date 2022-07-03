@@ -15,8 +15,8 @@ const Product = () => {
   const [product, setProduct] = useState();
   const [selectedOption, setSelectedOption] = useState();
 
-  const [updatedPower, setUpdatedPower] = useState();
-  const [updatedStorage, setUpdatedStorage] = useState();
+  const [updatedPower, setUpdatedPower] = useState(null);
+  const [updatedStorage, setUpdatedStorage] = useState(null);
 
   const [confirmationMessage, setConfirmationMessage] = useState(null);
   const [loaded, setLoaded] = useState(false);
@@ -39,15 +39,12 @@ const Product = () => {
     e.preventDefault();
     e.stopPropagation();
     selectedVariant(color);
-
-    console.log(selectedOption.color)
-    console.log(color)
     // if (selectedOption && selectedOption.color === color) {}
-
   }
 
   const handleAddToCart = (e) => {
     e.preventDefault();
+    console.log(updatedPower, updatedStorage)
     const newCartItem = createItemForCart(product, selectedOption, updatedPower, updatedStorage)
     addToCart(newCartItem);
     setConfirmationMessage("Item added to cart!");
@@ -74,20 +71,14 @@ const Product = () => {
       console.log("set default selected option", selectedOption);
     }
   }), [loaded];
-
-  useEffect(() => {
-
-  }, [selectedOption])
   
   return product ? (
     <div className={styles.productContainer}>
       <div className={styles.infoBar}>
         <div><button className="button_secondary" onClick={() => router.back()}>Back</button></div>
-        <div>
           {confirmationMessage && (
-            <p className="Product__confirmation">{confirmationMessage}</p>
+            <div className={styles.product__confirmation}><p className={styles.product__confirmation_message}>{confirmationMessage}</p></div>
           )}
-        </div>
       </div>
       
       <div className={styles.productCard}>
@@ -120,6 +111,10 @@ const Product = () => {
           selectedOption={selectedOption} 
           updatePower={updatePower}
           updateStorage={updateStorage}
+          updatedPower={updatedPower}
+          setUpdatedPower={setUpdatedPower}
+          updatedStorage={updatedStorage}
+          setUpdatedStorage={setUpdatedStorage}
           />
         )}
         {product.available && (selectedOption && selectedOption.quantity !== 0) ? <button className="button_primary" onClick={(e) => handleAddToCart(e)}>Add to Cart</button> : <button className="button_disabled" disabled>Item not available</button>}
