@@ -28,7 +28,7 @@ const Cart = () => {
               <th>Item</th>
               <th>Brand</th>
               <th>Price (kr)</th>
-              <th>Weight (gr)</th>
+              <th>Weight (kg)</th>
               <th className={styles.cartItem__center}>Color</th>
               <th className={styles.cartItem__center}>Quantity</th>
               <th className={styles.cartItem__center}>Power (w)</th>
@@ -45,7 +45,7 @@ const Cart = () => {
                 <td>{item.name}</td>
                 <td>{item.brand}</td>
                 <td>{item.price}</td>
-                <td>{item.weight} (g)</td>
+                <td>{item.weight}</td>
                 <td className={styles.cartItem__center}> <span className={styles.itemColor} style={{backgroundColor: `${item.options.color}`}}></span></td>
                 <td className={styles.cartItem__center}>{item.quantity}</td>
                 <td className={styles.cartItem__center}>{item.options.power ? <p> {item.options.power}</p> : "-"}</td>

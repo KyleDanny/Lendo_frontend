@@ -18,7 +18,7 @@ const VariantOptions = ({ selectedOption, updatePower, updateStorage, updatedPow
       <div>
         {selectedOption.power && (
           <>
-            <label>Power:  </label>
+            <label>Power:</label>
             <select className="custom-select" style={{width: "100px" }} name="powers" onChange={(e)=> handlePowerChange(e)} value={updatedPower || setUpdatedPower(selectedOption.power[0])} >
               {RenderOptionTags(selectedOption.power)}
             </select>
@@ -27,14 +27,14 @@ const VariantOptions = ({ selectedOption, updatePower, updateStorage, updatedPow
       
         {selectedOption.storage && (
           <>
-            <label>Storage:  </label>
+            <label>Storage:</label>
             <select className="custom-select" style={{width: "100px" }} name="storage" onChange={(e)=> handleStorageChange(e)} value={updatedStorage || setUpdatedStorage(selectedOption.storage[0])} >
               {RenderOptionTags(selectedOption.storage)}
             </select>
           </>
         )}
       </div>
-      <div>Stock: {selectedOption.quantity}</div>
+      <div><h3>Stock: {selectedOption.quantity}</h3></div>
     </div>
   )
 }

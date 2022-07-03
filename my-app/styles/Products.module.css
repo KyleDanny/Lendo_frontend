@@ -24,10 +24,14 @@
   height: 250px;
 }
 
-.x {
-  align-self: top;
+@media only screen and (max-width: 768px) {
+  .productsCard {
+    width: 35%;
+  }
 }
 
-.z {
-  align-self: bottom;
+@media only screen and (max-width: 425px) {
+  .productsCard {
+    width: 80%;
+  }
 }
