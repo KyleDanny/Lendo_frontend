@@ -11,7 +11,7 @@ const cartItems = useStore(state=>state.cart)
       <div className="nav-links">
         <Link href="/"><a>Home</a></Link>
         <Link href="/products"><a>Products</a></Link>
-        <Link href="/cart"><a>Cart: {cartItems.length}</a></Link>
+        {cartItems.length > 0 ? <Link href="/cart"><a>Cart: {cartItems.length}</a></Link> : null}
       </div>
     </nav>
   );

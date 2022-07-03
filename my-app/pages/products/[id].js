@@ -71,11 +71,11 @@ const Product = () => {
   return product ? (
     <div className={styles.productContainer}>
       <div className={styles.infoBar}>
-        <div><button className="button_secondary" onClick={() => router.back()}>Back</button></div>
           {confirmationMessage && (
-            <div className={styles.product__confirmation}><p className={styles.product__confirmation_message}>{confirmationMessage}</p></div>
-          )}
+            <div className={styles.product__confirmation}><p className={styles.product__confirmation_message}>{confirmationMessage} </p></div>
+            )} 
       </div>
+      <div className={styles.back}><button className="button_secondary" onClick={() => router.back()}>Back</button></div>
       
       <div className={styles.productCard}>
         <div className={styles.productCard__sectionHeader}>
@@ -113,7 +113,7 @@ const Product = () => {
           setUpdatedStorage={setUpdatedStorage}
           />
         )}
-        {product.available && (selectedOption && selectedOption.quantity !== 0) ? <button className="button_primary" onClick={(e) => handleAddToCart(e)}>Add to Cart</button> : <button className="button_disabled" disabled>Item not available</button>}
+        {product.available && (selectedOption && selectedOption.quantity !== 0) ? <button role="add_to_cart" className="button_primary" onClick={(e) => handleAddToCart(e)}>Add to Cart</button> : <button role="add_to_cart" className="button_disabled" disabled>Item not available</button>}
 
       </div>
     </div>

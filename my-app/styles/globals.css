@@ -96,3 +96,44 @@ nav .nav-links {
   padding: .6rem 1.2rem;
   margin-right: 1rem;
 }
+
+.button_remove {
+  color: #FC796E;
+  background-color: white;
+  border: 1px solid #FC796E;
+  border-radius: .4em;
+  padding: .4rem;
+}
+
+.button_remove:hover {
+  color: #FC796E;
+  background-color: #fee3e2;
+  border: 1px solid #FC796E;
+  border-radius: .4em;
+  padding: .4rem;
+}
+
+.buttonPlusMinus {
+  color: #FC796E;
+  background-color: white;
+  border: 1px solid #FC796E;
+  border-radius: .4em;
+}
+
+.buttonPlusMinus:hover {
+  color: #FC796E;
+  background-color: #fee3e2;
+  border: 1px solid #FC796E;
+  border-radius: .4em;
+}
+
+.custom-select {
+  position: relative;
+  font-family: Arial;
+  background: #fee3e2;
+  border-radius: .4em;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border: 6px solid transparent;
+  margin-left: 1em;
+}
+

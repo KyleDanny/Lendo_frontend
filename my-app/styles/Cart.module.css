@@ -1,6 +1,11 @@
 .cartContainer {
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
   background: white;
-  width: 80%;
+  padding: 3em;
+  border-radius: .4em;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .cartName {
@@ -15,6 +20,45 @@
   width: 100%;
 }
 
+.table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.table thead {
+  text-align: left;
+}
+
+.table thead tr th {
+  border-bottom: 1px solid grey;
+  overflow: hidden;
+}
+
+.table tbody tr td {
+  border-bottom: 1px solid grey;
+  overflow: hidden;
+}
+
 .cartItem {
   margin: 1em;
+}
+
+.itemColor {
+  display: block;
+  width: 100%;
+  height: 40px;
+  border: 1px solid grey;
+  border-radius: .4em;
+}
+
+.cartItem__center {
+  text-align: center;
+}
+
+.totalPrice {
+  margin-top: 1em;
+}
+
+.sectionButtonSummary {
+  margin-top: 1em;
 }

@@ -4,17 +4,18 @@ import Link from "next/link";
 
 const Products = () => {
   const products = useStore((state) => state.products.items);
+  const cart = useStore((state) => state.cart);
 
   return (
     <div className={styles.productsContainter}>
-      <button className="button_primary"><Link href={`/cart`}>Checkout</Link></button>
+      {cart.length > 0 ? <button className="button_primary"><Link href={`/cart`}>Checkout</Link></button> : <button className="button_disabled" disabled>Checkout</button>}
 
       <div className={styles.productsCard__grid}>
         {products.map((product) => (
-          <div key={product.id} className={styles.productsCard}>
+          <div role="listitem" key={product.id} className={styles.productsCard}>
             <div className={styles.x}><p>{product.name}</p></div>
             <div><p>Kr {product.price}</p></div>
-            <div className={styles.z}><button className="button_secondary"><Link href={`/products/${product.id}`}>see more</Link></button></div>
+            <div className={styles.z}><button role="see_more" className="button_secondary"><Link href={`/products/${product.id}`}>see more</Link></button></div>
           </div>
         ))}
       </div>

@@ -10,7 +10,6 @@ const useStore = create((set) => ({
   },
   addToCart: (product) => {
     set(state => {
-      console.log(product)
       const cartProduct = state.cart.find(cartProduct => cartProduct.id === product.id && JSON.stringify(cartProduct.options) === JSON.stringify(product.options));
       const productDB = state.products.items.find(productInDB => productInDB.id === product.id);
 
@@ -66,7 +65,14 @@ const useStore = create((set) => ({
           productDBOptions.quantity += 1;
         }
     });
-  }
+  },
+  // totalInCart: () => {
+  //   set((state) => {
+  //     const total = state.cart.reduce((acc, item) => acc + (Number(item.price) * item.quantity), 0);
+  //     console.log(total); 
+  //     return total;
+  //   })
+  // }
 }));
 
 export default useStore;
