@@ -24,8 +24,6 @@ const Product = () => {
   const { getSingleProduct } = useStore();
   const { addToCart } = useStore();
 
-  const [nowSelected, setNowSelected] = useState(false);
-
   const updatePower = power => setUpdatedPower(power);
   const updateStorage = storage => setUpdatedStorage(storage);
 
@@ -39,7 +37,6 @@ const Product = () => {
     e.preventDefault();
     e.stopPropagation();
     selectedVariant(color);
-    // if (selectedOption && selectedOption.color === color) {}
   }
 
   const handleAddToCart = (e) => {
@@ -68,7 +65,6 @@ const Product = () => {
   useEffect(() => {
     if (loaded && product) {
       setSelectedOption(product.options[0]);
-      console.log("set default selected option", selectedOption);
     }
   }), [loaded];
   
@@ -100,8 +96,8 @@ const Product = () => {
               <ColorOption 
                 key={i} 
                 color={option.color} 
-                nowSelected={nowSelected}
                 handleClick={handleClick}
+                selectedOption={selectedOption}
               />
             );
           })}

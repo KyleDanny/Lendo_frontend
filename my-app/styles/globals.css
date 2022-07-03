@@ -47,7 +47,9 @@ nav .nav-links {
 }
 
 .active {
-  background: grey;
+  background: #ef8374;
+  color: white;
+  border: 1px solid white;
 }
 
 .button_primary {

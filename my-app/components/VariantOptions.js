@@ -1,20 +1,15 @@
 import { RenderOptionTags } from "../helper_functions";
-import { useState, useEffect } from "react";
 import styles from '../styles/VariantOptions.module.css';
 
 const VariantOptions = ({ selectedOption, updatePower, updateStorage, updatedPower, setUpdatedPower, updatedStorage, setUpdatedStorage }) => {
-  // const [power, setPower] = useState(null);
-  // const [storage, setStorage] = useState(null);
   
   const handlePowerChange = (e) => {
     e.preventDefault();
-    // setPower(e.target.value);
     updatePower(e.target.value);
   }
 
   const handleStorageChange = (e) => {
     e.preventDefault();
-    // setStorage(e.target.value);
     updateStorage(e.target.value);
   }
 
