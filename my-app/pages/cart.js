@@ -1,6 +1,6 @@
 import useStore from "../store";
 import styles from "../styles/Cart.module.css";
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 
 const Cart = () => {
   const items = useStore((state) => state.cart);
@@ -8,19 +8,24 @@ const Cart = () => {
   const { removeFromCart, addItemToCart, removeItemFromCart } = useStore();
   const [cartTotal, setCartTotal] = useState(0);
 
-  useEffect(() => { 
-    calculateTotal(); 
-  }, [itemsUpdated])
-  
+  useEffect(() => {
+    calculateTotal();
+  }, [itemsUpdated]);
+
   const calculateTotal = () => {
-    let total = items.reduce((acc, item) => acc + (Number(item.price) * item.quantity), 0);
+    let total = items.reduce(
+      (acc, item) => acc + Number(item.price) * item.quantity,
+      0
+    );
     setCartTotal(total);
-  };  
+  };
 
   return (
     <div className={styles.cartContainer}>
-      <div className={styles.cartName}><h1>Cart</h1></div>
-      
+      <div className={styles.cartName}>
+        <h1>Cart</h1>
+      </div>
+
       <div className={styles.cart}>
         <table className={styles.table}>
           <thead>
@@ -38,7 +43,7 @@ const Cart = () => {
               <th></th>
             </tr>
           </thead>
-          
+
           <tbody>
             {items.map((item, i) => (
               <tr key={i} className={styles.cartItem}>
@@ -46,13 +51,44 @@ const Cart = () => {
                 <td>{item.brand}</td>
                 <td>{item.price}</td>
                 <td>{item.weight}</td>
-                <td className={styles.cartItem__center}> <span className={styles.itemColor} style={{backgroundColor: `${item.options.color}`}}></span></td>
+                <td className={styles.cartItem__center}>
+                  {" "}
+                  <span
+                    className={styles.itemColor}
+                    style={{ backgroundColor: `${item.options.color}` }}
+                  ></span>
+                </td>
                 <td className={styles.cartItem__center}>{item.quantity}</td>
-                <td className={styles.cartItem__center}>{item.options.power ? <p> {item.options.power}</p> : "-"}</td>
-                <td className={styles.cartItem__center}>{item.options.storage ? <p> {item.options.storage}</p> : "-"}</td>
-                <td className={styles.cartItem__center}><button className="buttonPlusMinus" onClick={() => addItemToCart(item)}>+</button></td>
-                <td className={styles.cartItem__center}><button className="buttonPlusMinus" onClick={() => removeItemFromCart(item)}>-</button></td>
-                <td className={styles.cartItem__center}><button className="button_remove" onClick={() => removeFromCart(item)}>Remove</button></td>
+                <td className={styles.cartItem__center}>
+                  {item.options.power ? <p> {item.options.power}</p> : "-"}
+                </td>
+                <td className={styles.cartItem__center}>
+                  {item.options.storage ? <p> {item.options.storage}</p> : "-"}
+                </td>
+                <td className={styles.cartItem__center}>
+                  <button
+                    className="buttonPlusMinus"
+                    onClick={() => addItemToCart(item)}
+                  >
+                    +
+                  </button>
+                </td>
+                <td className={styles.cartItem__center}>
+                  <button
+                    className="buttonPlusMinus"
+                    onClick={() => removeItemFromCart(item)}
+                  >
+                    -
+                  </button>
+                </td>
+                <td className={styles.cartItem__center}>
+                  <button
+                    className="button_remove"
+                    onClick={() => removeFromCart(item)}
+                  >
+                    Remove
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>

@@ -9,7 +9,7 @@
 }
 
 .cartName {
-
+  margin-bottom: .5em;
 }
 
 .cart {
@@ -23,6 +23,7 @@
 .table {
   width: 100%;
   table-layout: fixed;
+  font-size: .9em;
 }
 
 .table thead {
