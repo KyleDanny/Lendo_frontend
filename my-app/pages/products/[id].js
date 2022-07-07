@@ -1,8 +1,9 @@
 import styles from "../../styles/Product.module.css";
 
 import { useRouter } from "next/router";
-import useStore from "../../store";
 import { useEffect, useState } from "react";
+
+import useStore from "../../store";
 import VariantOptions from "../../components/VariantOptions";
 import ColorOption from "../../components/ColorOption";
 
@@ -13,11 +14,10 @@ import {
 } from "../../helper_functions";
 
 const Product = () => {
+  const { getSingleProduct, addToCart } = useStore();
+  
   const router = useRouter();
   const [id, setId] = useState();
-  
-  const { getSingleProduct } = useStore();
-  const { addToCart } = useStore();
   
   const [product, setProduct] = useState();
   const [selectedOption, setSelectedOption] = useState();
@@ -45,7 +45,6 @@ const Product = () => {
 
   const handleAddToCart = (e) => {
     e.preventDefault();
-    console.log(updatedPower, updatedStorage);
     const newCartItem = createItemForCart(
       product,
       selectedOption,
@@ -78,8 +77,7 @@ const Product = () => {
     if (loaded && product) {
       setSelectedOption(product.options[0]);
     }
-  }),
-    [loaded];
+  }, [loaded, product]);
 
   return product ? (
     <div className={styles.productContainer}>

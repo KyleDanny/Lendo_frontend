@@ -21,7 +21,6 @@ describe('Products', () => {
 
     const buttonSeeMore = screen.getAllByRole("see_more");
     fireEvent.click(buttonSeeMore[0]);
-    // const buttonAddToCart = screen.getAllByRole("add_to_cart")[0];
   })
 
 })

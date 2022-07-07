@@ -27,7 +27,7 @@ const Products = () => {
             <div>
               <p>Kr {product.price}</p>
             </div>
-            <div className={styles.z}>
+            <div>
               <button role="see_more" className="button_secondary">
                 <Link href={`/products/${product.id}`}>see more</Link>
               </button>

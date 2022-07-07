@@ -66,13 +66,6 @@ const useStore = create((set) => ({
         }
     });
   },
-  // totalInCart: () => {
-  //   set((state) => {
-  //     const total = state.cart.reduce((acc, item) => acc + (Number(item.price) * item.quantity), 0);
-  //     console.log(total); 
-  //     return total;
-  //   })
-  // }
 }));
 
 export default useStore;
